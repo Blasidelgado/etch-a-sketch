@@ -36,14 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.getElementById("root");
     const newSketchBtn = document.getElementById("sketch-btn");
     const newSketchModal = document.getElementById("sketch-modal");
+    const confirmBtn = document.getElementById("confirm-btn");
+    const sketchSizeInput = document.getElementById("sketch-size-input");
+
 
     // Append squares to the grid
     createGrid().forEach(square => gridContainer.appendChild(square));
 
-    newSketchBtn.onclick = () => {
-        newSketchModal.showModal();
-        if (sketchSize > 100) {
-            return alert("Sketch size must be 100 or lower");
+    newSketchBtn.onclick = () => newSketchModal.setAttribute("open", "true");
+    confirmBtn.onclick = e => {
+        e.preventDefault();
+        const sketchSize = parseInt(sketchSizeInput.value);
+        if (isNaN(sketchSize) || sketchSize > 100 || sketchSize < 1) {
+            return alert("Select a valid sketch size between 1 and 100");
         }
         gridContainer.innerHTML = null;
         createGrid(sketchSize).forEach(square => gridContainer.appendChild(square));
