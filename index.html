@@ -13,7 +13,19 @@
             <button id="sketch-btn" type="button">New sketch</button>
         </header>
         <main>
-            <dialog>apodaca</dialog>
+            <!-- A modal dialog containing a form -->
+            <dialog id="sketch-modal">
+                <form id="sketch-modal-form">
+                    <div id="sketch-modal-input">
+                        <label for="sketch-size-input">Select the size for the new sketch: </label>
+                        <input id="sketch-size-input" type="text" />
+                    </div>
+                    <div id="sketch-modal-btns">
+                        <button value="cancel" formmethod="dialog">Cancel</button>
+                        <button id="confirmBtn" value="default">Confirm</button>
+                    </div>
+                </form>
+            </dialog>
             <section id="root"></section>
         </main>
     </body>

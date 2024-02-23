@@ -35,12 +35,13 @@ const createGrid = (numOfSquares=16) => {
 document.addEventListener('DOMContentLoaded', () => {
     const gridContainer = document.getElementById("root");
     const newSketchBtn = document.getElementById("sketch-btn");
+    const newSketchModal = document.getElementById("sketch-modal");
 
     // Append squares to the grid
     createGrid().forEach(square => gridContainer.appendChild(square));
 
     newSketchBtn.onclick = () => {
-        const sketchSize = prompt("Select the size you want for the new sketch");
+        newSketchModal.showModal();
         if (sketchSize > 100) {
             return alert("Sketch size must be 100 or lower");
         }
